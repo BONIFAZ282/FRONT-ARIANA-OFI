@@ -1,0 +1,51 @@
+<mat-toolbar class="header">
+  <button 
+    *ngIf="showMenuButton"
+    mat-icon-button 
+    class="menu-button"
+    (click)="onToggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <span class="title">Multiservicios Ariana</span>
+  
+  <span class="spacer"></span>
+  
+  <ng-container *ngIf="isAuthenticated">
+    <span class="welcome" [class.hide-mobile]="true">
+      Bienvenido, {{ userInfo?.username || 'Usuario' }}
+    </span>
+    
+    <button 
+      mat-icon-button 
+      class="user-menu-button mobile-only"
+      [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    
+    <button 
+      class="logout-button desktop-only"
+      (click)="logout()">
+      Cerrar sesión
+    </button>
+  </ng-container>
+  
+  <ng-container *ngIf="!isAuthenticated">
+    <button class="login-button" (click)="router.navigate(['/login'])">
+      <span class="hide-mobile">Iniciar sesión</span>
+      <mat-icon class="mobile-only">login</mat-icon>
+    </button>
+  </ng-container>
+</mat-toolbar>
+
+<mat-menu #userMenu="matMenu" class="user-dropdown">
+  <div class="user-info" mat-menu-item disabled>
+    <mat-icon>person</mat-icon>
+    <span>{{ userInfo?.username || 'Usuario' }}</span>
+  </div>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>

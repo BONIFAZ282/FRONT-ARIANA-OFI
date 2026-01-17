@@ -1,0 +1,298 @@
+
+.page-container {
+  padding: 0px 20px 20px 20px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #111827;
+  margin-bottom: 30px;
+}
+
+// ========== LAYOUT PRINCIPAL ==========
+.content-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+// ========== FORMULARIO (Izquierda) ==========
+.form-section {
+  width: 350px;
+  flex-shrink: 0;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  input, select, textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+    font-family: inherit;
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+
+    &:focus {
+      border-color: #111827;
+    }
+
+    &.error {
+      border-color: #ef4444;
+    }
+  }
+
+  select {
+    color: #9ca3af;
+    cursor: pointer;
+
+    &:valid {
+      color: #111827;
+    }
+
+    option {
+      color: #111827;
+    }
+
+    option:first-child {
+      color: #9ca3af;
+    }
+  }
+
+  textarea {
+    resize: none;
+    min-height: 70px;
+  }
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 12px 20px;
+  background: #1e3a5f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #2d4a6f;
+  }
+
+  &:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
+}
+
+.btn-secondary {
+  padding: 12px 20px;
+  background: #6b7280;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #4b5563;
+  }
+}
+
+// ========== TABLA (Derecha) ==========
+.table-section {
+  flex: 1;
+  min-width: 0;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 40px;
+  color: #6b7280;
+
+  i {
+    font-size: 20px;
+  }
+}
+
+.table-scroll {
+  max-height: 600px;
+  overflow-y: auto;
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    th {
+      background: #d9d9d9;
+      color: #111827;
+      padding: 12px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap;
+      border-bottom: 1px solid #c0c0c0;
+    }
+  }
+
+  tbody {
+    tr {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      transition: background 0.2s;
+
+      &:hover {
+        background: #f3f4f6;
+      }
+
+      &:nth-child(even) {
+        background: #f9fafb;
+
+        &:hover {
+          background: #f3f4f6;
+        }
+      }
+    }
+
+    td {
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 13px;
+      color: #374151;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+
+  i {
+    font-size: 13px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &.edit {
+    background: #e0e7ff;
+    color: #3730a3;
+
+    &:hover {
+      background: #c7d2fe;
+    }
+  }
+
+  &.delete {
+    background: #fee2e2;
+    color: #b91c1c;
+
+    &:hover {
+      background: #fecaca;
+    }
+  }
+}
+
+.no-data {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+  padding: 30px !important;
+}
+
+// ========== RESPONSIVE ==========
+@media (max-width: 1100px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .form-section {
+    width: 100%;
+  }
+
+  .table-section {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 20px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}

@@ -1,0 +1,38 @@
+<!-- src/app/layout/main-layout/main-layout.component.html -->
+<div class="layout">
+
+  <app-sidebar 
+    [class.show]="sidebarOpen"
+    (closeSidenav)="closeSidebar()">
+  </app-sidebar>
+
+  <div 
+    class="sidebar-overlay" 
+    *ngIf="sidebarOpen" 
+    (click)="closeSidebar()">
+  </div>
+
+  <main class="content">
+
+    <div class="content-header">
+      
+      <button class="menu-toggle" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="user-info">
+        <span class="username">{{ userInfo?.username }}</span>
+        <div class="user-icon">
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="content-body">
+      <router-outlet></router-outlet>
+    </div>
+
+  </main>
+
+</div>
